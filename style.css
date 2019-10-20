@@ -1,0 +1,15 @@
+.message {
+    font-family: 'Courier New', Courier, monospace;
+    clear: both;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.showMessage {
+    width: auto;
+    height: 150px;
+    border: 12px;
+    border-block-color: red;
+    
+}
