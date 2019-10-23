@@ -4,11 +4,12 @@
     $dbHost = 'localhost';
     $dbName = 'ChatApp';
     $dbUser = 'root';
-    $dbPassword = 'root';
+    $dbPassword = '';
 
 
 			try{
-				$dbConnect = new PDO('mysql:$dbHost, $dbName, $dbUser, $dbPassword');
+				$dbConnect = new PDO("mysql:host=$dbHost;$dbName", $dbUser, $dbPassword);
+				$dbConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				echo "Database Connected!";
 				
 			}

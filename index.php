@@ -11,8 +11,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <?php 
-            include('dbconnect.php');
-            session_start();
         
         ?>
     </head>
@@ -22,18 +20,41 @@
         <![endif]-->
         <?php 
 
+       
+        if(isset){
+
+            try
+                {
+                    include('dbconnect.php');
+                    $sqlQuery = "INSERT INTO ChatApp.User (userName, UserEmail)
+                                    VALUES ('Test4', 'abq@abc.com')";
+
+                    $dbConnect->exec($sqlQuery);
+                    echo "New record created successfully";
+                }
+            catch(PDOException $e)
+                {   
+                    echo $sqlQuery . "<br>" . $e->getMessage();
+                }
+
+            }
+
         ?>
 
         
         <form action="index.php" method="post" >
 		<div>
-			<label for="email">User Name</label>
+			<label for="email">Name</label>
+			<input type="text" name="user" value="user" id="user" required="required">
+        </div>
+        <div>
+			<label for="email">Email</label>
 			<input type="text" name="user" value="user" id="user" required="required">
 		</div>
-		<div>
+		<!-- <div>
 			<label for="femail">Password</label>
 			<input type="password" name="pass" value="pass" id="pass" required="required">
-		</div>
+		</div> -->
 		<div>
 			<input type="submit" value="submit" >
 		</div>

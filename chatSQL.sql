@@ -4,7 +4,7 @@ CREATE TABLE User (
     UserId int NOT NULL,
     UserName varchar(50) NOT NULL,
     UserEmail VARCHAR(50) NOT NULL
-    Password varchar(50) NOT NULL,
+    Password varchar(50) NULL,
     CONSTRAINT USER_PK PRIMARY KEY (userId)
 )ENGINE=INNODB;
 
