@@ -10,57 +10,21 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
-        <?php 
-        
-        ?>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <?php 
 
-            if(isset($_POST['submit'])){
-                $user = $_POST['user'];
-                $email = $_POST['email'];
-            try
-                {
-                    include('dbconnect.php');
-                    $sqlQuery = "INSERT INTO ChatApp.User (userName, UserEmail)
-                                    VALUES ('$user', '$email')";
+        <button>
+            <a target="popup" 
+                onclick="window.open('login.php','name','width=400,height=400')">
+                Message us!
+            </a>
+        </button>
 
-                    $dbConnect->exec($sqlQuery);
-                    echo "New record created successfully";
-                    header('Location:message.php');
-                
-                }
-            catch(PDOException $e)
-                {   
-                    echo $sqlQuery . "<br>" . $e->getMessage();
-                }
-            }
+       
         
-
-        ?>
-
-        
-        <form action="index.php" method="post" >
-		<div>
-			<label for="email">Name</label>
-			<input type="text" name="user" id="user" required="required">
-        </div>
-        <div>
-			<label for="email">Email</label>
-			<input type="text" name="email" id="email" required="required">
-		</div>
-		<!-- <div>
-			<label for="femail">Password</label>
-			<input type="password" name="pass" value="pass" id="pass" required="required">
-		</div> -->
-		<div>
-			<input type="submit" name="submit" >
-		</div>
-</form>
-
+        <script src="" async defer></script>
     </body>
 </html>
