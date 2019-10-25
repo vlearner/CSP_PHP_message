@@ -20,7 +20,7 @@
 
         <?php 
                 if(isset($_POST['sendMessage'])){
-                    $messageText = $_POST['massage'];
+                    $messageText = $_POST['message'];
                     try
                     {
                         include('dbconnect.php');
@@ -36,15 +36,37 @@
                         echo $messageQuery . "<br>" . $e->getMessage();
                     }
             }
+
+            //select query!!
+            $getMessage = "SELECT MessageTEXT FROM ChatApp.Message ORDER BY MessageId DESC";
+            
+
         
         
         ?>
+          <script src="" async defer>
+            function sendmessage(){
+                var message =  formMessage.message.value;
+                var xmlHttp = new XMLHttpRequest();
+
+                xmlHttp.onreadystatechange = function(){
+                    if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                        document.getElementsByClassName('showMessage').innerHTML = xmlHttp.responseText;
+                
+                    }
+                }
+
+                
+                xmlHttp.open('GET', 'insert.php?message='+message, true);
+                xmlHttp.send();
+            }
+        </script>
 
 
           <div>
-             <form method="post" action="message.php">
+             <form method="post" action="message.php" name="formMessage">
                 <div class="message">
-                    Message: <input type="text" name="massage"><br>
+                    Message: <input type="text" name="message"><br>
                     <input name="sendMessage" type="submit">
                 </div>
             </form>
@@ -54,9 +76,25 @@
 
 
         <div>
-            <input type="area" class="showMessage" disabled placeholder="Message Loading...">
+            <input type="area" name=class="showMessage" disabled placeholder="Message Loading...">
         </div>
         
-        <script src="" async defer></script>
+        <script src="" async defer>
+            function sendmessage(){
+                var message =  formMessage.message.value;
+                var xmlHttp = new XMLHttpRequest();
+
+                xmlHttp.onreadystatechange = function(){
+                    if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                        document.getElementsByClassName('showMessage').innerHTML = xmlHttp.responseText;
+                
+                    }
+                }
+
+                
+                xmlHttp.open('GET', 'insert.php?message='+message, true);
+                xmlHttp.send();
+            }
+        </script>
     </body>
 </html>
