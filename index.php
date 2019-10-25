@@ -20,24 +20,26 @@
         <![endif]-->
         <?php 
 
-       
-        if(isset){
-
+            if(isset($_POST['submit'])){
+                $user = $_POST['user'];
+                $email = $_POST['email'];
             try
                 {
                     include('dbconnect.php');
                     $sqlQuery = "INSERT INTO ChatApp.User (userName, UserEmail)
-                                    VALUES ('Test4', 'abq@abc.com')";
+                                    VALUES ('$user', '$email')";
 
                     $dbConnect->exec($sqlQuery);
                     echo "New record created successfully";
+                    header('Location:message.php');
+                
                 }
             catch(PDOException $e)
                 {   
                     echo $sqlQuery . "<br>" . $e->getMessage();
                 }
-
             }
+        
 
         ?>
 
@@ -45,18 +47,18 @@
         <form action="index.php" method="post" >
 		<div>
 			<label for="email">Name</label>
-			<input type="text" name="user" value="user" id="user" required="required">
+			<input type="text" name="user" id="user" required="required">
         </div>
         <div>
 			<label for="email">Email</label>
-			<input type="text" name="user" value="user" id="user" required="required">
+			<input type="text" name="email" id="email" required="required">
 		</div>
 		<!-- <div>
 			<label for="femail">Password</label>
 			<input type="password" name="pass" value="pass" id="pass" required="required">
 		</div> -->
 		<div>
-			<input type="submit" value="submit" >
+			<input type="submit" name="submit" >
 		</div>
 </form>
 
