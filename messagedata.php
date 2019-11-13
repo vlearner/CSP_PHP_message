@@ -1,7 +1,7 @@
 <?php 
 include_once'dbconnect.php';
 
-$getMessage = "SELECT * FROM ChatApp.Message ORDER BY MessageId DESC LIMIT 10";
+$getMessage = "SELECT * FROM ChatApp65.Message ORDER BY MessageId DESC LIMIT 10";
 $chat = $dbConnect->prepare($getMessage);
 $chat->execute();
 $chatInfo = $chat->fetchAll();
@@ -11,6 +11,5 @@ $chatInfo = $chat->fetchAll();
         echo $chatDetail['MessageText'] . '<br>'; 
  } 
     } 
-
 
 ?>

@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="description" content="">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -17,63 +17,40 @@
                 exit;
             }
 
-            include('dbconnect.php');
-            if(isset($_POST['sendMessage'])){
-                $messageText = $_POST['message'];
-                try
-                {   // include('dbconnect.php');
-                    $messageQuery = "INSERT INTO ChatApp.Message 
-                                            ( MessageText )
-                                            VALUES 
-                                            ( '$messageText')";
-                    $dbConnect->exec($messageQuery);
-                }
-                catch(PDOException $e)
-                {   
-                    echo $messageQuery . "<br>" . $e->getMessage();
-                }
-            }
+            // include('dbconnect.php');
+            // if(isset($_POST['sendMessage'])){
+            //     $messageText = $_POST['message'];
+            //     try
+            //     {   // include('dbconnect.php');
+            //         $messageQuery = "INSERT INTO ChatApp.Message 
+            //                                 ( MessageText )
+            //                                 VALUES 
+            //                                 ( '$messageText')";
+            //         $dbConnect->exec($messageQuery);
+            //     }
+            //     catch(PDOException $e)
+            //     {   
+            //         echo $messageQuery .  . $e->getMessage();
+            //     }
+            // }
         
         ?> 
-        <script>
-            // //  $(function () {
-            //         $('form').on('sendMessage', function (e) {
-            //             e.preventDefault();
-            //             $.ajax({
-            //                 type: 'post',
-            //                 url: 'message.php',
-            //                 data: $('form').serialize(),
-            //                 success: function () {
-            //                     alert('form was submitted');
-            //                 }
-            //             });
+        <script type="text/javascript">
 
-            //         });
-
-            //     });
-
-            $(function () {
-                $('form').on('submit', function (e) {
-                    // e.preventDefault();
+            $(document).ready(function(){
+                $("#sendMessage").click(function () {
+                    var message=$("#message").val();
                     $.ajax({
-                        type: 'post',
                         url: 'sendmessage.php',
-                        data: $('form').serialize(),
-                        success: function () {
-                        alert('form was submitted');
+                        method: 'POST',
+                        data: {message:message,
+                        success: function (data) {
+                        alert(data);
                         }
                     });
                 });
             });
-
-                
-      
-      
-      
-      
       </script>
-
-
         <div class="page-header">
            <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1> 
         </div>
@@ -88,7 +65,7 @@
         <!-- <form method="post" action="sendmessage.php" name="formMessage"> -->
           <form>
             <div class="message1">       
-            <input class="form-control" type="message" name="message"> 
+            <input class="form-control" type="message" name="message" id="message"> 
             <div class="input-group-append" id="button-addon4">
             <input class="btn btn-outline-secondary" name="submit" id="sendMessage" type="submit" value="Submit">
         </form>

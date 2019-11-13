@@ -1,51 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-        <?php 
-        
-        ?>
     </head>
     <body class="text-center">
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an 
-                <strong>outdated</strong> browser. Please <a href="#">
-                    upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
         <?php 
         session_start();
-
-            // if(isset($_POST['submit'])){
-            //     $user = $_POST['user'];
-            //     $email = $_POST['email'];
-            // try
-            //     {
-            //         include('dbconnect.php');
-            //         $sqlQuery = "INSERT INTO ChatApp.User (userName, UserEmail)
-            //                         VALUES ('$user', '$email')";
-
-            //         $dbConnect->exec($sqlQuery);
-            //         echo "New record created successfully";
-            //         header('Location:message.php');
-                
-            //     }
-            // catch(PDOException $e)
-            //     {   
-            //         echo $sqlQuery . "<br>" . $e->getMessage();
-            //     }
-            // }
-        
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 header("location: message.php");
                 exit;
@@ -104,9 +69,7 @@
                 }
                 unset($dbConnect);
             }
-
         ?>
-
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
@@ -152,13 +115,10 @@
                 </div>
             </div>
         </div>
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
         </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
         </script>
-
-
     </body>
 </html>
