@@ -13,3 +13,30 @@
     border-block-color: red;
     
 }
+
+.contactButton {
+    position:fixed;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	text-align:center;
+    transition: all 0.2s ease-in 0s;
+    cursor: pointer;
+}
+
+.logInForm{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+closeChatButton{
+    position:fixed;
+	height:60px;
+	top:40px;
+	left:40px;
+	text-align:center;
+    transition: all 0.2s ease-in 0s;
+    cursor: pointer;
+}

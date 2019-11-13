@@ -4,12 +4,13 @@ CREATE TABLE `User`(
     UserId int NOT NULL AUTO_INCREMENT,
     UserName varchar(50) NOT NULL,
     UserEmail VARCHAR(50) NOT NULL,
-    Password varchar(50) NULL,
     CONSTRAINT USER_PK PRIMARY KEY (userId)
 )ENGINE=INNODB;
 
 CREATE TABLE `Message` (
-  `MessageId` int NOT NULL AUTO_INCREMENT,
+  `MessageId` int(10) NOT NULL AUTO_INCREMENT,
+  `SenderId` int(10) NOT NULL,
+  `RecieverId` int(10) NOT NULL,
   `MessageTime` timestamp  NULL DEFAULT CURRENT_TIMESTAMP,
   `MessageText` varchar(255) NOT NULL,
    CONSTRAINT MESSAGE_PK PRIMARY KEY (MessageId)

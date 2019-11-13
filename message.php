@@ -1,145 +1,114 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
         <meta name="description" content="">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-     
-
         <?php 
-        include('dbconnect.php');
-                if(isset($_POST['sendMessage'])){
-                    $messageText = $_POST['message'];
-                    try
-                    {
-                        // include('dbconnect.php');
-                        $messageQuery = "INSERT INTO ChatApp.Message (MessageText)
-                                    VALUES ('$messageText')";
+            session_start();
 
-                         $dbConnect->exec($messageQuery);
-                         echo "New message recorded!";
-                
-                    }
-                    catch(PDOException $e)
-                    {   
-                        echo $messageQuery . "<br>" . $e->getMessage();
-                    }
+            if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+                header("location: login.php");
+                exit;
             }
 
-            //select query!!
-            // $getMessage = "SELECT MessageTEXT FROM ChatApp.Message ORDER BY MessageId DESC";
-            // $statement = $dbConnect->prepare($getMessage);
-            // $statement->execute();
-            // $articles = $statement->fetchAll();
-            // // $statement->closeCursor();
-            // foreach(new tableRows (new RecursiveArrayIterator($statement->fetchAll()))
-            //         as $k=>$v){
-            //             echo $v;
-            //         }
-
-            // $conn =$dbConnect;
-            // $getMessage = "SELECT MessageTEXT FROM ChatApp.Message ORDER BY MessageId DESC";
-            // $rs=mysqli_query($conn, $getMessage);
-            // $count = mysqli_num_rows($rs);
-            // if($count > 0){
-            //     while($row){
-            //         while($row = mysqli_fetch_array($rs)){
-            //             echo $row['message'] . "<br>";
-            //         }
-            //     }
-            // }
-            
-
-            // $result = $dbConnect->prepare("SELECT MessageTEXT FROM ChatApp.Message ORDER BY MessageId DESC"); 
-            // $result->execute();
-            // $row_count =var_dump($result->fetchAll());
-            // echo var_dump($row_count);
-        
-
-                $getMessage = "SELECT * FROM ChatApp.Message ORDER BY MessageId DESC";
-                $chat = $dbConnect->prepare($getMessage);
-                $chat->execute();
-             // $chat = $dbConnect->execute($getMessage);
-                $chatInfo = $chat->fetchAll();
-                // $chat = $chat->fetchALL();
-        
-        ?>
-
-
-           
-           
-          <script src="" async defer>
-            function sendmessage(){
-                var message =  formMessage.message.value;
-                var xmlHttp = new XMLHttpRequest();
-
-                xmlHttp.onreadystatechange = function(){
-                    if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-                        document.getElementsByClassName('showMessage').innerHTML = xmlHttp.responseText;
-                
-                    }
+            include('dbconnect.php');
+            if(isset($_POST['sendMessage'])){
+                $messageText = $_POST['message'];
+                try
+                {   // include('dbconnect.php');
+                    $messageQuery = "INSERT INTO ChatApp.Message 
+                                            ( MessageText )
+                                            VALUES 
+                                            ( '$messageText')";
+                    $dbConnect->exec($messageQuery);
                 }
+                catch(PDOException $e)
+                {   
+                    echo $messageQuery . "<br>" . $e->getMessage();
+                }
+            }
+        
+        ?> 
+        <script>
+            // //  $(function () {
+            //         $('form').on('sendMessage', function (e) {
+            //             e.preventDefault();
+            //             $.ajax({
+            //                 type: 'post',
+            //                 url: 'message.php',
+            //                 data: $('form').serialize(),
+            //                 success: function () {
+            //                     alert('form was submitted');
+            //                 }
+            //             });
+
+            //         });
+
+            //     });
+
+            $(function () {
+                $('form').on('submit', function (e) {
+                    // e.preventDefault();
+                    $.ajax({
+                        type: 'post',
+                        url: 'sendmessage.php',
+                        data: $('form').serialize(),
+                        success: function () {
+                        alert('form was submitted');
+                        }
+                    });
+                });
+            });
 
                 
-                xmlHttp.open('GET', 'insert.php?message='+message, true);
-                xmlHttp.send();
-            }
-        </script>
+      
+      
+      
+      
+      </script>
 
 
-          <div>
-             <form method="post" action="message.php" name="formMessage">
-                <div class="message">
-                    Message: <input type="text" name="message"><br>
-                    <input name="sendMessage" type="submit">
-                </div>
-            </form>
+        <div class="page-header">
+           <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1> 
         </div>
-        <h4>Note</h4>
-    
-            <tbody>
-        <?php
-        if(!empty($chatInfo)){
-            foreach ($chatInfo as $chatDetail) { ?>
-            <tr class="table-row">
-                <td>
-                       <?php echo $chatDetail['MessageText']; ?> <br>
-                </td>
-            </tr>
-                   
-            <?php } 
-                } 
-                ?>
-        </tbody>
-    
-        
-        <script src="" async defer>
-            function sendmessage(){
-                var message =  formMessage.message.value;
-                var xmlHttp = new XMLHttpRequest();
 
-                xmlHttp.onreadystatechange = function(){
-                    if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
-                        document.getElementsByClassName('showMessage').innerHTML = xmlHttp.responseText;
-                
-                    }
-                }
+        <div id="showMessage"></div>
+        <div class="closeChatButton">
+        <a href="exit.php" class="btn btn-info">Close Chat</a>
+         </div>
 
-                
-                xmlHttp.open('GET', 'insert.php?message='+message, true);
-                xmlHttp.send();
-            }
+        <div class="input-group">
+        <h4 class="alert-heading">Message:</h4><wbr>
+        <!-- <form method="post" action="sendmessage.php" name="formMessage"> -->
+          <form>
+            <div class="message1">       
+            <input class="form-control" type="message" name="message"> 
+            <div class="input-group-append" id="button-addon4">
+            <input class="btn btn-outline-secondary" name="submit" id="sendMessage" type="submit" value="Submit">
+        </form>
+        </div>
+        </div>
+    
+        <script type="text/javascript">
+   
+                // get messages form database
+// ONLY WORKS ON CHROME! NEED TO WORK ON FIREFOX AND SAFARI!
+                $(document).ready(function(){
+                    // event.preventDefault();
+                    setInterval(function(){
+                        $('#showMessage').load('messagedata.php')
+                    }, 1000);
+                });
+
         </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 </html>
