@@ -40,3 +40,10 @@ closeChatButton{
     transition: all 0.2s ease-in 0s;
     cursor: pointer;
 }
+
+div.scrollBar {
+    background-color: lightblue;
+    width: 110px;
+    height: 110px;
+    overflow: auto;
+  }

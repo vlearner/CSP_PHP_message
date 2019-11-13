@@ -28,16 +28,19 @@
                     // include('dbconnect.php');
                     $messageQuery = "INSERT INTO ChatApp65.Message 
                                             ( MessageText )
-                                            VALUES 
-                                            ( '$messageText')";
+                                            VALUE
+                                            ('$messageText')";
                     $dbConnect->exec($messageQuery);
-                    echo "Form Submitted Succesfully";
+                    echo json_encode("json " . $messageQuery);
+                    print_r($_POST);
                     
                 }
                 catch(PDOException $e)
                 {   
                     echo $messageQuery . "</br>" . $e->getMessage();
                 }
+
+                
             // }
 
 

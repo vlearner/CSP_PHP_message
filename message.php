@@ -6,9 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+       
+        <!-- link to stylesheet -->
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body style="text-align: center;">
         <?php 
             session_start();
 
@@ -16,60 +18,73 @@
                 header("location: login.php");
                 exit;
             }
-
-            // include('dbconnect.php');
-            // if(isset($_POST['sendMessage'])){
-            //     $messageText = $_POST['message'];
-            //     try
-            //     {   // include('dbconnect.php');
-            //         $messageQuery = "INSERT INTO ChatApp.Message 
-            //                                 ( MessageText )
-            //                                 VALUES 
-            //                                 ( '$messageText')";
-            //         $dbConnect->exec($messageQuery);
-            //     }
-            //     catch(PDOException $e)
-            //     {   
-            //         echo $messageQuery .  . $e->getMessage();
-            //     }
-            // }
         
         ?> 
         <script type="text/javascript">
 
             $(document).ready(function(){
-                $("#sendMessage").click(function () {
-                    var message=$("#message").val();
+                    
+
+                $('form').submit(function(event) {
+                    // Stop the browser from submitting the form.
+                    event.preventDefault();
+                    var insertMessage = {
+                        'message' : $('input[message=message]').val()
+                    }
+
+                    // var insertMessage = 'message='+message;
                     $.ajax({
-                        url: 'sendmessage.php',
                         method: 'POST',
-                        data: {message:message,
-                        success: function (data) {
-                        alert(data);
-                        }
+                        url: 'sendmessage.php',
+                        data: insertMessage,
+                        dataType    : 'json', // what type of data do we expect back from the server
+                        encode          : true
+                    })
+                    .done(function(data) {
+
+                        // log data to the console so we can see
+                        console.log(data + "hi"); 
+
+                        // here we will handle errors and validation messages
                     });
                 });
             });
+
+
+            jQuery(document).ready(function(){
+                 jQuery('.scrollbar-inner').scrollbar();
+            });
+
+            
       </script>
         <div class="page-header">
            <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1> 
         </div>
 
-        <div id="showMessage"></div>
+        <!-- Show chat message -->
+        <div style="
+        width: 250px;
+        height: 150px;
+        overflow: auto;"
+        id="showMessage">
+        </div>
+
+        <!--  Close chat to kill session  -->
         <div class="closeChatButton">
         <a href="exit.php" class="btn btn-info">Close Chat</a>
          </div>
 
-        <div class="input-group">
+        
+         <div class="input-group">
         <h4 class="alert-heading">Message:</h4><wbr>
         <!-- <form method="post" action="sendmessage.php" name="formMessage"> -->
-          <form>
+          <form enctype="application/x-www-form-urlencoded" method="POST">
             <div class="message1">       
             <input class="form-control" type="message" name="message" id="message"> 
             <div class="input-group-append" id="button-addon4">
             <input class="btn btn-outline-secondary" name="submit" id="sendMessage" type="submit" value="Submit">
         </form>
-        </div>
+         </div>
         </div>
     
         <script type="text/javascript">
