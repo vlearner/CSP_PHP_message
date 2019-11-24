@@ -1,11 +1,10 @@
 
 <?php
-    // DB variables
+    // databse variables
     $dbHost = 'localhost';
     $dbName = 'ChatApp65';
     $dbUser = 'root';
     $dbPassword = '';
-
 
 	try
 	{

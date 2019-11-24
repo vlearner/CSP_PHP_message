@@ -47,3 +47,7 @@ div.scrollBar {
     height: 110px;
     overflow: auto;
   }
+
+  #exit {
+      text-align: center;
+  }

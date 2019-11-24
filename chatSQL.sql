@@ -18,9 +18,9 @@ CREATE TABLE `Message` (
 
 -- MOCK Data
 
-INSERT INTO User (userID, userName, password)
-    VALUE 
-    (1, 'user1', '1234'),
-    (2, 'user2', '1234'),
-    (3, 'user3', '1234'),
-    (4, 'user4', '1234');
+-- INSERT INTO User (userID, userName)
+--     VALUE 
+--     (1, 'user1', '1234'),
+--     (2, 'user2', '1234'),
+--     (3, 'user3', '1234'),
+--     (4, 'user4', '1234');

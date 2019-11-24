@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c52de3d-3ec5-4ad0-9356-8a3497b40c04" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/messageForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chatSQL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/chatSQL.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbconnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exit.php" beforeDir="false" afterPath="$PROJECT_DIR$/exit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/logs.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sendmessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/sendmessage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sendmessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/sendmessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +58,8 @@
       <workItem from="1571441936612" duration="251000" />
       <workItem from="1573522872717" duration="512000" />
       <workItem from="1573678646263" duration="237000" />
+      <workItem from="1574293756144" duration="4911000" />
+      <workItem from="1574560519749" duration="2691000" />
     </task>
     <servers />
   </component>

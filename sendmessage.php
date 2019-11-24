@@ -1,48 +1,23 @@
 <?php
-// include('dbconnect.php');
+    //connect to data base
+include('dbconnect.php');
 
-// // if(isset($_POST['sendMessage'])){
-//     // include('dbconnect.php');
-//     $messageText = $_POST['message'];
-//    //  include('dbconnect.php');
-//         $messageQuery = "INSERT INTO ChatApp65.Message 
-//                                 ( MessageText )
-//                                 VALUES 
-//                                 ( '$messageText')";
-//         if($dbConnect->exec($messageText) === TRUE){
-//             echo "Form Submitted Succesfully";
-//         }else{
-//             echo "failed";
-//         }
-
-        
-        // $dbConnect->exec($messageQuery);
-      
-
-   
-  include('dbconnect.php');
-            // if(isset($_POST['sendMessage'])){
-                $messageText = isset($_POST['message']);
-                try
-                {   
-                    // include('dbconnect.php');
-                    $messageQuery = "INSERT INTO ChatApp65.Message 
-                                            ( MessageText )
-                                            VALUE
-                                            ('$messageText')";
-                    $dbConnect->exec($messageQuery);
-                    echo json_encode("json " . $messageQuery);
-                    print_r($_POST);
-                    
-                }
-                catch(PDOException $e)
-                {   
-                    echo $messageQuery . "</br>" . $e->getMessage();
-                }
-
-                
-            // }
+$messageText = filter_input(INPUT_POST, 'message');
 
 
+
+    try{
+        $messageQuery =
+            'INSERT INTO ChatApp65.Message (MessageText) 
+                    VALUE (:message)';
+        $stmt = $dbConnect->prepare($messageQuery);
+        $stmt->bindValue(':message', $messageText);
+        $stmt->execute();
+        $stmt->closeCursor();
+        header("location: message.php");
+//        print_r($_POST);
+    }catch (PDOException $e){
+        echo sprintf("%s<br>%s", $messageQuery, $e);
+    }
 
 ?>
