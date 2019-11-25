@@ -6,7 +6,7 @@ include('dbconnect.php');
 session_start();
 
 //$sendToMessage = filter_input(INPUT_POST, 'SenderId');
-$fromMessage = $_SESSION["id"];
+//$fromMessage = $_SESSION["id"];
 $messageText = filter_input(INPUT_POST, 'message');
 
 
@@ -20,8 +20,8 @@ try{
     $stmt->bindValue(':message', $messageText);
     $stmt->execute();
     $stmt->closeCursor();
-    header("location: message.php");
-//        print_r($_POST);
+    header("location: adminpage.php");
+        print_r($_POST);
 }catch (PDOException $e){
     echo sprintf("%s<br>%s", $messageQuery, $e);
 }

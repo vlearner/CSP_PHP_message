@@ -14,34 +14,14 @@ include_once'dbconnect.php';
 //    header("location: login.php");
 //    exit;
 //}
-//$selectQuery = "SELECT UserId, UserName, UserEmail
-//                                        FROM ChatApp3.User
-//                                        WHERE UserId = '5'";
-//$res = $dbConnect->query($selectQuery);
-//
-//if($res->num_rows > 0){
-//    echo "<table>
-//<tr>
-//    <th>User ID</th>
-//    <th>name</th>
-//    <th>Email</th>
-//</tr>
-//    ";
-//    while ($row = $res->fetchAll()){
-//        echo "<tr><td>".$row['UserId']."</td><td>".$row['UserName']."</td><td>".$row['UserEmail']."</td></tr>";
-//    }
-//    echo "</table>";
-//}else{
-//    echo "No user found";
-//}
 
 
-$stmt = $dbConnect->prepare("SELECT UserId, UserName, UserEmail 
-                                     FROM ChatApp3.User 
-                                        WHERE UserId = '5'");
-$stmt->execute();
-$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-print_r($res);
+//$stmt = $dbConnect->prepare("SELECT UserId, UserName, UserEmail
+//                                     FROM ChatApp3.User
+//                                        WHERE UserId = '5'");
+//$stmt->execute();
+//$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+//print_r($res);
 
 
 ?>
@@ -69,7 +49,7 @@ print_r($res);
     <h4 class="alert-heading">Message:</h4><wbr>
 
 
-    <?php include ('messageForm.php'); ?>
+    <?php include ('admimessageForm.php'); ?>
 
     <script type="text/javascript">
 
