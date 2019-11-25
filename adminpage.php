@@ -58,6 +58,7 @@ print_r($res);
      id="showMessage">
 </div>
 
+<?php include('adminsendmessage.php') ?>
 <!--  Close chat to kill session  -->
 <div class="closeChatButton">
     <a href="exit.php" class="btn btn-info">Close Chat</a>

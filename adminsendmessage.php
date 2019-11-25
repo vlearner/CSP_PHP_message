@@ -14,9 +14,9 @@ $messageText = filter_input(INPUT_POST, 'message');
 try{
     $messageQuery =
         'INSERT INTO ChatApp3.Message (SenderId, RecieverId, MessageText) 
-                    VALUE (:id, 1, :message)';
+                    VALUE (5, 1, :message)';
     $stmt = $dbConnect->prepare($messageQuery);
-    $stmt->bindValue(':id', $fromMessage);
+//    $stmt->bindValue(':id', $fromMessage);
     $stmt->bindValue(':message', $messageText);
     $stmt->execute();
     $stmt->closeCursor();
