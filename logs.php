@@ -12,9 +12,9 @@
 
         require('dbconnect.php');
 
-        $getMessage = "SELECT * FROM ChatApp65.Message WHERE senderID ";
+        $getMessage = "SELECT * FROM ChatApp3.Message WHERE senderID ";
 
-        $getMessage = "SELECT * FROM ChatApp65.Message ORDER BY MessageId DESC LIMIT 15";
+        $getMessage = "SELECT * FROM ChatApp3.Message ORDER BY MessageId DESC LIMIT 15";
         $chat = $dbConnect->prepare($getMessage);
         $chat->execute();
         $chatInfo = $chat->fetchAll();

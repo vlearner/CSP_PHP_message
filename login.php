@@ -39,7 +39,7 @@
 
                 if(empty($userNameError) && empty($userEmaiError)){
                     $selectQuery = "SELECT UserId, UserName, UserEmail 
-                                        FROM ChatApp65.User 
+                                        FROM ChatApp3.User 
                                         WHERE UserName = :user";
 
                     if($stmt = $dbConnect->prepare($selectQuery)){

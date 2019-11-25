@@ -2,7 +2,7 @@
 <?php
     // databse variables
     $dbHost = 'localhost';
-    $dbName = 'ChatApp65';
+    $dbName = 'ChatApp3';
     $dbUser = 'root';
     $dbPassword = '';
 

@@ -8,7 +8,7 @@ CREATE TABLE `User`(
 )ENGINE=INNODB;
 
 CREATE TABLE `Message` (
-  `MessageId` int(10) NOT NULL AUTO_INCREMENT,
+  `MessageId` int(10) NOT NULL,
   `SenderId` int(10) NOT NULL,
   `RecieverId` int(10) NOT NULL,
   `MessageTime` timestamp  NULL DEFAULT CURRENT_TIMESTAMP,
@@ -18,9 +18,10 @@ CREATE TABLE `Message` (
 
 -- MOCK Data
 
--- INSERT INTO User (userID, userName)
---     VALUE 
---     (1, 'user1', '1234'),
---     (2, 'user2', '1234'),
---     (3, 'user3', '1234'),
---     (4, 'user4', '1234');
+# INSERT INTO User (userName, UserEmail)
+#     VALUE
+#     ('user1', '1@1.com' ),
+#     ('user2', '2@2.com'),
+#     ('user3', '3@3.com'),
+#     ('user4', '4@4.com'),
+#     ('admin', 'a@a.com');

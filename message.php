@@ -18,13 +18,8 @@
 
         ?>
         <div class="page-header">
-           <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?></h1> 
+           <h1>Hi, <?php echo htmlspecialchars($_SESSION["id"] ); ?></h1>
         </div>
-
-        <form method="post">
-            <input type="button" id="hey" value="Hey">
-        </form>
-
 
         <!-- Show chat message -->
         <div style="
