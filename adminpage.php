@@ -1,27 +1,88 @@
 <!DOCTYPE html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
     <!-- link to stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"  type="text/css" href="style.css" />
 </head>
-<body style="text-align: center;">
+<body style="">
 <?php
-include_once'dbconnect.php';
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-//    header("location: login.php");
-//    exit;
-//}
+session_start();
+include('dbconnect.php');
+
+//session_start();
+
+$adminId = $_SESSION['id'];
+
+$getUser = "SELECT * FROM ChatApp3.User WHERE UserId != :id ";
+$stmt = $dbConnect->prepare($getUser);
+$stmt->bindValue(':id', $adminId);
+$stmt->execute();
+$result= $stmt->fetchAll(PDO::FETCH_ASSOC);
+//print_r($result);
+
+print "<table wdith=\"100%\">\n";
+print "<tr>\n";
+// add the table headers
+foreach ($result[0] as $key => $useless){
+    print "<th>$key</th>";
+}
+print "</tr>";
+// display data
+foreach ($result as $row){
+    print "<tr>";
+    foreach ($row as $key => $val){
+        print "<td>$val</td>";
+
+    }
+    print "</tr>\n";
+}
+// close the table
+print "</table>\n";
 
 
-//$stmt = $dbConnect->prepare("SELECT UserId, UserName, UserEmail
-//                                     FROM ChatApp3.User
-//                                        WHERE UserId = '5'");
-//$stmt->execute();
-//$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-//print_r($res);
+
+function fetch_user_chat_history($from_user_id, $to_user_id, $dbConnect)
+{
+//    $query = "
+//	SELECT MessageText, SenderId FROM ChatApp3.Message
+//	WHERE (SenderId = '" . $from_user_id . "'
+//	AND RecieverId = '" . $to_user_id . "')
+//	OR (RecieverId = '" . $to_user_id . "'
+//	AND SenderId = '" . $from_user_id . "')
+//	ORDER BY MessageTime DESC
+//	";
+
+    $query = "
+	SELECT MessageText, SenderId FROM ChatApp3.Message 
+	WHERE (SenderId = '" . $from_user_id . "')  
+	ORDER BY MessageTime DESC
+	";
+    $statement = $dbConnect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    print_r($result);
+//    print "<table wdith=\"100%\">\n";
+//    print "<tr>\n";
+//// add the table headers
+//    foreach ($result[0] as $key => $useless){
+//        print "<th>$key</th>";
+//    }
+//    print "</tr>";
+//    foreach ($result as $row){
+//        print "<tr>";
+//        foreach ($row as $key => $val){
+//            print "<td>$val</td>";
+//        }
+//        print "</tr>\n";
+//    }
+//    // close the table
+//    print "</table>\n";
+}
+
+echo fetch_user_chat_history(2,5,$dbConnect);
+
+$getUser = "Select * From ChatApp3.User ORDER BY UserId;";
+$chatUser = $dbConnect->query($getUser);
+
 
 
 ?>
@@ -31,14 +92,36 @@ include_once'dbconnect.php';
 
 
 <!-- Show chat message -->
-<div style="
-        width: 250px;
-        height: 150px;
-        overflow: auto;"
-     id="showMessage">
+<!--<div style="-->
+<!--        width: 250px;-->
+<!--        height: 150px;-->
+<!--        overflow: auto;"-->
+<!--     id="showMessage">-->
+<!--</div>-->
+
+<?php
+foreach ($result as $row => $link) {
+    echo  '<a href="'.  $link['UserId'].'">' . $link['UserName']. '</a></br>';
+}
+
+
+?>
+
+<div id="sidebar">
+    <!-- display a list of chat users -->
+    <h2>Chat User</h2>
+    <ul class="nav">
+        <?php foreach ($chatUser as $user) : ?>
+            <li>
+                <a href="?category_id=<?php echo $user['UserId']; ?>">
+                    <?php echo $user['UserName']; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </div>
 
-<?php include('adminsendmessage.php') ?>
+<?php //include('adminsendmessage.php') ?>
 <!--  Close chat to kill session  -->
 <div class="closeChatButton">
     <a href="exit.php" class="btn btn-info">Close Chat</a>
@@ -50,6 +133,8 @@ include_once'dbconnect.php';
 
 
     <?php include ('admimessageForm.php'); ?>
+
+
 
     <script type="text/javascript">
 
