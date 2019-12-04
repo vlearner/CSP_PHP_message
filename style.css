@@ -1,6 +1,5 @@
 body {
     margin-top: 0;
-    background-color: rgb(128, 141, 159);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -61,4 +60,10 @@ div.scrollBar {
 #sidebar {
     float: left;
     width: 150px;
+}
+
+#content {
+    float: left;
+    width: 500px;
+    padding-bottom: 1.5em;
 }

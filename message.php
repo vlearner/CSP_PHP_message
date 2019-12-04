@@ -18,7 +18,7 @@
 
         ?>
         <div class="page-header">
-           <h1>Hi, <?php echo htmlspecialchars($_SESSION["id"] ); ?></h1>
+           <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"] ); ?></h1>
         </div>
 
         <!-- Show chat message -->

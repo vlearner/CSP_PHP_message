@@ -1,15 +1,12 @@
 <?php
 
-
+session_start();
     //connect to data base
 include('dbconnect.php');
-session_start();
 
 //$sendToMessage = filter_input(INPUT_POST, 'SenderId');
 $fromMessage = $_SESSION["id"];
 $messageText = filter_input(INPUT_POST, 'message');
-
-
 
     try{
         $messageQuery =

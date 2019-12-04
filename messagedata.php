@@ -1,13 +1,17 @@
-<?php 
-include_once'dbconnect.php';
-//SELECT * FROM Message WHERE SenderID = 1 and RecieverId = 5 OR SenderID = 5 and RecieverId = 1 ORDER BY MessageTime DESC;
+<?php
+session_start();
 
+
+include_once'dbconnect.php';
+
+
+$fromMessage = $_SESSION["id"];
 $getMessage = "SELECT * 
                 FROM ChatApp3.Message 
-                WHERE SenderID = 1 
+                WHERE SenderID = $fromMessage 
                 and RecieverId = 5 
                 OR SenderID = 5 
-                and RecieverId = 1 
+                and RecieverId = $fromMessage 
                 ORDER BY MessageTime DESC;";
 $chat = $dbConnect->prepare($getMessage);
 $chat->execute();
