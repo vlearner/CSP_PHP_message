@@ -1,48 +1,26 @@
 <?php
-// include('dbconnect.php');
 
-// // if(isset($_POST['sendMessage'])){
-//     // include('dbconnect.php');
-//     $messageText = $_POST['message'];
-//    //  include('dbconnect.php');
-//         $messageQuery = "INSERT INTO ChatApp65.Message 
-//                                 ( MessageText )
-//                                 VALUES 
-//                                 ( '$messageText')";
-//         if($dbConnect->exec($messageText) === TRUE){
-//             echo "Form Submitted Succesfully";
-//         }else{
-//             echo "failed";
-//         }
+session_start();
+    //connect to data base
+include('dbconnect.php');
 
-        
-        // $dbConnect->exec($messageQuery);
-      
+//$sendToMessage = filter_input(INPUT_POST, 'SenderId');
+$fromMessage = $_SESSION["id"];
+$messageText = filter_input(INPUT_POST, 'message');
 
-   
-  include('dbconnect.php');
-            // if(isset($_POST['sendMessage'])){
-                $messageText = isset($_POST['message']);
-                try
-                {   
-                    // include('dbconnect.php');
-                    $messageQuery = "INSERT INTO ChatApp65.Message 
-                                            ( MessageText )
-                                            VALUE
-                                            ('$messageText')";
-                    $dbConnect->exec($messageQuery);
-                    echo json_encode("json " . $messageQuery);
-                    print_r($_POST);
-                    
-                }
-                catch(PDOException $e)
-                {   
-                    echo $messageQuery . "</br>" . $e->getMessage();
-                }
-
-                
-            // }
-
-
+    try{
+        $messageQuery =
+            'INSERT INTO ChatApp3.Message (SenderId, RecieverId, MessageText) 
+                    VALUE (:id, 5, :message)';
+        $stmt = $dbConnect->prepare($messageQuery);
+        $stmt->bindValue(':id', $fromMessage);
+        $stmt->bindValue(':message', $messageText);
+        $stmt->execute();
+        $stmt->closeCursor();
+        header("location: message.php");
+//        print_r($_POST);
+    }catch (PDOException $e){
+        echo sprintf("%s<br>%s", $messageQuery, $e);
+    }
 
 ?>

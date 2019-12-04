@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="">
 </head>
 <body>
-    <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <?php 
 
         require('dbconnect.php');
 
-        $getMessage = "SELECT * FROM ChatApp.Message ORDER BY MessageId DESC LIMIT 15";
+        $getMessage = "SELECT * FROM ChatApp3.Message WHERE senderID ";
+
+        $getMessage = "SELECT * FROM ChatApp3.Message ORDER BY MessageId DESC LIMIT 15";
         $chat = $dbConnect->prepare($getMessage);
         $chat->execute();
         $chatInfo = $chat->fetchAll();

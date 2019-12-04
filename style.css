@@ -1,3 +1,8 @@
+body {
+    margin-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .message {
     font-family: 'Courier New', Courier, monospace;
     clear: both;
@@ -47,3 +52,18 @@ div.scrollBar {
     height: 110px;
     overflow: auto;
   }
+
+  #exit {
+      text-align: center;
+  }
+
+#sidebar {
+    float: left;
+    width: 150px;
+}
+
+#content {
+    float: left;
+    width: 500px;
+    padding-bottom: 1.5em;
+}
