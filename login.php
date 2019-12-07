@@ -15,14 +15,11 @@
                 header("location: message.php");
                 exit;
             }
-
             require_once "dbconnect.php";
-
             $userName  = $userEmail = "";
             $userNameError  = $userEmailError = "";
 
             if($_SERVER["REQUEST_METHOD"] == "POST"){
-
                 if(empty(trim($_POST["user"]))){
                     $userNameError = "Please enter Name";
                 }
@@ -39,14 +36,11 @@
 
                 if(empty($userNameError) && empty($userEmaiError)){
                     $selectQuery = "SELECT UserId, UserName, UserEmail 
-                                        FROM ChatApp65.User 
+                                        FROM ChatApp3.User 
                                         WHERE UserName = :user";
-
                     if($stmt = $dbConnect->prepare($selectQuery)){
                         $stmt->bindParam(":user", $pUser, PDO::PARAM_STR);
-
                             $pUser = trim($_POST["user"]);
-
                             if($stmt->execute()){
                                 if($stmt->rowCount() == 1){
                                     if($row = $stmt->fetch()){
@@ -65,7 +59,6 @@
                             }
                     }
                     unset($stmt);
-
                 }
                 unset($dbConnect);
             }
@@ -96,8 +89,7 @@
                             type="email" 
                             value="<?php echo $userEmail; ?>"
                             name="email"  
-                            id="email" 
-                            value="<?php echo $confirm_password; ?>"
+                            id="email"
                             required="required" 
                             placeholder="Email" 
                             class="form-control">
