@@ -35,9 +35,14 @@
                 }
 
                 if(empty($userNameError) && empty($userEmaiError)){
-                    $selectQuery = "SELECT UserId, UserName, UserEmail 
-                                        FROM ChatApp3.User 
-                                        WHERE UserName = :user";
+//                    $selectQuery = "SELECT UserId, UserName, UserEmail
+//                                        FROM ChatApp3.User
+//                                        WHERE UserName = :user";
+                    $selectQuery = "SELECT Person.PersonId, Person.FirstName, ContactInfo.EmailAddress
+                                    FROM Person
+                                    INNER JOIN ContactInfo ON ContactInfo.ContactInfoId = Person.ContactInfoId
+                                    LEFT JOIN Customer ON Customer.PersonId = Person.PersonId
+                                    WHERE Person.FirstName = :user";
                     if($stmt = $dbConnect->prepare($selectQuery)){
                         $stmt->bindParam(":user", $pUser, PDO::PARAM_STR);
                             $pUser = trim($_POST["user"]);
@@ -106,6 +111,19 @@
                 </form>
                 </div>
             </div>
+
+            <p>
+                 User First Name: Adriana - Email: fake_email_1@gmail.com <br>
+                 User First Name: Cody - Email: fake_email_2@gmail.com <br>
+                 User First Name: Sam - Email: fake_email_3@gmail.com <br>
+                 User First Name: Kailyn - Email: fake_emal_4@gmail.com <br>
+                 User First Name: Alejandro - Email: fake_email_5@gmail.com <br>
+                 User First Name: Sam - Email: lovhaugd2@gmail.com <br>
+                 User First Name: James - Email: lovhaugd3@gmail.com <br>
+                 User First Name: Test - Email: tester@tester.com <br>
+                 User First Name: Dan - Email: loavhugd@csp.edu <br>
+                 User First Name: Charlie - Email: newuser@csp.edu <br>
+            </p>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">

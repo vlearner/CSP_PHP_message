@@ -39,9 +39,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty($userNameError) && empty($userEmaiError)){
-        $selectQuery = "SELECT UserId, UserName, UserEmail 
-                                        FROM ChatApp3.User 
-                                        WHERE UserName = :user";
+//        $selectQuery = "SELECT UserId, UserName, UserEmail
+//                                        FROM ChatApp3.User
+//                                        WHERE UserName = :user";
+
+        $selectQuery = "SELECT Person.PersonId, Person.FirstName, ContactInfo.EmailAddress
+FROM Person
+INNER JOIN ContactInfo ON ContactInfo.ContactInfoId = Person.ContactInfoId
+LEFT JOIN Employee ON Employee.PersonId = Person.PersonId
+WHERE Person.FirstName = :user";
 
         if($stmt = $dbConnect->prepare($selectQuery)){
             $stmt->bindParam(":user", $pUser, PDO::PARAM_STR);
@@ -115,6 +121,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </div>
 </div>
+
+<p>
+    User: Test2
+    Email: admin2@admin.com
+</p>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
 </script>

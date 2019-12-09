@@ -7,10 +7,12 @@
 <?php
 //    $userId = 1;
 if (!isset($_SESSION)) { session_start();}
+//Remove unwanted Notice error
+error_reporting( error_reporting() & ~E_NOTICE );
 
 
 include('dbconnect.php');
-//$adminId = $_SESSION['id'];
+
 
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: adminLogIn.php");
@@ -29,17 +31,22 @@ if(!isset($UserId)) {
 }
 
 //get user by name
-$query = "Select * From ChatApp3.User where UserId = $UserId";
+$query = "SELECT * From Person
+          INNER JOIN Customer
+          ON Customer.PersonId = Person.PersonId
+           WHERE Customer.CustomerId =$UserId";
 $stmt = $dbConnect->query($query);
 $stmt = $stmt->fetch();
-$stmt_name = $stmt['UserName'];
-$stmt_id = $stmt['UserId'];
+$stmt_name = $stmt['FirstName'];
+$stmt_id = $stmt['CustomerId'];
 
-$getUser = "Select * From ChatApp3.User WHERE UserId != 5 ORDER BY UserId;";
+
+$getUser = "SELECT * From Person, Customer WHERE Customer.PersonId = Person.PersonId";
 $chatUser = $dbConnect->query($getUser);
 
-$getMessageByUser = "Select * from Message
- where SenderId = $UserId 
+
+$getMessageByUser = "Select * from Message2
+ where CustomerID = $UserId 
  ORDER BY MessageTime DESC";
 $messages = $dbConnect->query($getMessageByUser);
 ?>
@@ -53,12 +60,17 @@ $messages = $dbConnect->query($getMessageByUser);
     <ul class="nav">
         <?php foreach ($chatUser as $user) : ?>
             <li>
-                <a href="?UserID=<?php echo $user['UserId']; ?>">
-                    <?php echo $user['UserName']; ?>
+                <a href="?UserID=<?php echo $user['CustomerId']; ?>">
+                    <?php echo $user['FirstName']; ?>
                 </a>
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <!--  Close chat to kill session  -->
+    <div class="closeChatButton">
+        <a href="exit.php" class="btn btn-info">Close Chat to Kill session</a>
+    </div>
 </div>
 
 <div id="content">
@@ -70,31 +82,33 @@ $messages = $dbConnect->query($getMessageByUser);
         </a>
     </h3>
     <!-- display a table of products -->
-    <h2><?php echo "User Name: $stmt_name\tUser ID: $stmt_id"; ?></h2>
+    <h2><?php echo "User Name: $stmt_name,\tCustomer ID: $stmt_id"; ?></h2>
     <table>
         <tr>
 
-            <th>User ID</th>
+<!--            <th>Customer ID</th>-->
             <th>Message</th>
             <th>Time</th>
             <th>&nbsp;</th>
         </tr>
-        <?php $blank = '';?>
+<!--        --><?php //$blank = '';?>
         <?php foreach ($messages as $message) : ?>
             <tr>
-                <?php  if ($blank == $message['SenderId']){
-                    echo '<td>&nbsp;</td>';
-                } else {?>
-                <td><?php echo $message['SenderId']; ?></td>
-             <?php  }?>
+<!--                --><?php // if ($blank == $message['EmployeeId']){
+//                    echo '<td>&nbsp;</td>';
+//                } else {?>
+<!--                <td>--><?php //echo $message['EmployeeId']; ?><!--</td>-->
+<!--             --><?php // }?>
                 <td><?php echo $message['MessageText']; ?></td>
                 <td><?php echo $message['MessageTime']; ?></td>
 
         <?php
-        $blank = $message['SenderId'];
+//        $blank = $message['EmployeeId'];
         endforeach; ?>
     </table>
 </div>
+
+
 
     <script type="text/javascript">
 
@@ -103,7 +117,7 @@ $messages = $dbConnect->query($getMessageByUser);
         $(document).ready(function(){
             // event.preventDefault();
             setInterval(function(){
-                $('#showMessage').load('messagedata.php')
+                $('#showMessage').load('adminPage.php')
             }, 1000);
         });
 
