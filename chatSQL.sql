@@ -54,3 +54,10 @@ WHERE Person.FirstName = Test2;
 SELECT * From Person INNER JOIN Customer ON Customer.PersonId = Person.PersonId;
 
 SELECT * From Person INNER JOIN Customer ON Customer.PersonId = Person.PersonId WHERE Customer.CustomerId ;
+
+# get user name, PersonId,
+SELECT Person.PersonId, Person.FirstName, ContactInfo.EmailAddress
+FROM Person
+INNER JOIN ContactInfo ON ContactInfo.ContactInfoId = Person.ContactInfoId
+LEFT JOIN Customer ON Customer.PersonId = Person.PersonId
+WHERE Person.FirstName = 'Adriana'

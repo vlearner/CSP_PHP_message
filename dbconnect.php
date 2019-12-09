@@ -1,7 +1,7 @@
 
 <?php
     // databse variables
-    $dbHost = 'mysql::host=localhost;dbname=OLGSTORE';
+    $dbHost = 'mysql::host=localhost;dbname=ChatApp3';
 //    $dbName = 'ChatApp3, OLGSTORE';
     $dbUser = 'root';
     $dbPassword = '';

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link rel="stylesheet" 
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-       
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
         <!-- link to stylesheet -->
-        <link rel="stylesheet" href="style.css">
+<!--        <link rel="stylesheet" href="style.css">-->
     </head>
-    <body style="text-align: center;">
+    <body">
         <?php 
             session_start();
 
@@ -17,30 +16,41 @@
             }
 
         ?>
-        <div class="page-header">
-           <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"] ); ?></h1>
-        </div>
+        <div class="container-fluid">
+            <div class="jumbotron jumbotron-fluid">
+                <h3 class="display-6 text-center" >Hello, <?php echo htmlspecialchars($_SESSION["username"] ); ?></h3>
+            </div>
+
+
+
+
 
         <!-- Show chat message -->
-        <div style="
-        width: 250px;
-        height: 150px;
+        <div class="d-flex p-2 bd-highlight" style="
+        width: auto;
+        height: 260px;
         overflow: auto;"
         id="showMessage">
         </div>
 
-        <!--  Close chat to kill session  -->
-        <div class="closeChatButton">
-        <a href="exit.php" class="btn btn-info">Close Chat</a>
-         </div>
-
-        
-         <div class="input-group">
-        <h4 class="alert-heading">Message:</h4><wbr>
 
 
-        <?php include ('messageForm.php'); ?>
-    
+<!--        -->
+<!--         <div class="input-group">-->
+<!--        <h4 class="alert-heading">Message</h4><wbr>-->
+<!---->
+<!--         </div>-->
+
+            <?php include ('messageForm.php'); ?>
+             <!--  Close chat to kill session  -->
+             <div class="closeChatButton">
+                 <a href="exit.php" class="btn btn-danger btn-lg btn-block">Close Chat</a>
+             </div>
+
+
+
+        </div>
+
         <script type="text/javascript">
    
                 // get messages form database
@@ -56,5 +66,5 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </body>
+    </div>
 </html>

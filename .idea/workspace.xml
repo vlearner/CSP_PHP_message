@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c52de3d-3ec5-4ad0-9356-8a3497b40c04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Chat App.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/adminLogIn.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminLogIn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminMessageForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminMessageForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminSendMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminSendMessage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chatSQL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/chatSQL.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dbconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbconnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/message.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/messageForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/messageForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messagedata.php" beforeDir="false" afterPath="$PROJECT_DIR$/messagedata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectUser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sendmessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/sendmessage.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +33,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -74,6 +65,8 @@
       <workItem from="1575769418491" duration="3893000" />
       <workItem from="1575787769046" duration="17580000" />
       <workItem from="1575811156874" duration="1257000" />
+      <workItem from="1575854609437" duration="1047000" />
+      <workItem from="1575923211934" duration="6880000" />
     </task>
     <servers />
   </component>

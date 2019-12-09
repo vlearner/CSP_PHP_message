@@ -11,7 +11,7 @@
         <div class="contactButton">
             <button type="button" class="btn btn-success">
                 <a target="popup" 
-                    onclick="window.open('login.php','name','width=400,height=400')">
+                    onclick="window.open('login.php','popUpWindow','height=500,width=500,left=700,top=70,location=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes')">
                     Message us!
                 </a>
             </button>

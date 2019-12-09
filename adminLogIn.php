@@ -44,10 +44,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 //                                        WHERE UserName = :user";
 
         $selectQuery = "SELECT Person.PersonId, Person.FirstName, ContactInfo.EmailAddress
-FROM Person
-INNER JOIN ContactInfo ON ContactInfo.ContactInfoId = Person.ContactInfoId
-LEFT JOIN Employee ON Employee.PersonId = Person.PersonId
-WHERE Person.FirstName = :user";
+                        FROM Person
+                        INNER JOIN ContactInfo ON ContactInfo.ContactInfoId = Person.ContactInfoId
+                        LEFT JOIN Employee ON Employee.PersonId = Person.PersonId
+                        WHERE Person.FirstName = :user";
 
         if($stmt = $dbConnect->prepare($selectQuery)){
             $stmt->bindParam(":user", $pUser, PDO::PARAM_STR);
