@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
+<?php include_once ('style.html'); ?>
     <body>
         <div class="contactButton">
             <button type="button" class="btn btn-success">
-                <a target="popup" 
-                    onclick="window.open('login.php','popUpWindow','height=500,width=500,left=700,top=70,location=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes')">
+                <a target="popup"
+                    onclick="window.open('login.php','popUpWindow','height=700,width=500,left=700,top=70,location=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes')">
                     Message us!
                 </a>
             </button>

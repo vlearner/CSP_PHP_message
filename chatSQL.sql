@@ -1,4 +1,5 @@
 
+
 CREATE TABLE IF NOT EXISTS `Message` (
  `MessageId` int(11) NOT NULL,
  `MessageToken` int(11) NOT NULL,
@@ -6,7 +7,9 @@ CREATE TABLE IF NOT EXISTS `Message` (
  `EmployeeId` int(11) NOT NULL,
  `MessageTime` timestamp  NULL DEFAULT CURRENT_TIMESTAMP,
  `MessageText` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+
 
 
 SELECT Person.PersonId, Person.FirstName, ContactInfo.EmailAddress

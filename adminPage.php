@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<head>
-    <!-- link to stylesheet -->
-    <link rel="stylesheet"  type="text/css" href="style.css" />
-</head>
-<body style="">
+
 <?php
+include_once ('style.html');
 //    $userId = 1;
 if (!isset($_SESSION)) { session_start();}
 //Remove unwanted Notice error
@@ -45,85 +41,65 @@ $getUser = "SELECT * From Person, Customer WHERE Customer.PersonId = Person.Pers
 $chatUser = $dbConnect->query($getUser);
 
 
-$getMessageByUser = "Select * from Message2
+$getMessageByUser = "Select * from Message
  where CustomerID = $UserId 
- ORDER BY MessageTime DESC";
+ ORDER BY MessageTime DESC LIMIT 15";
 $messages = $dbConnect->query($getMessageByUser);
+
 ?>
+
+<div class="container-fluid">
 <div class="page-header">
     <h1>Hi, <?php echo htmlspecialchars($_SESSION["username"] ); ?></h1>
 </div>
 
-<div id="sidebar">
-    <!-- display a list of chat users -->
-    <h2>Chat User</h2>
-    <ul class="nav">
-        <?php foreach ($chatUser as $user) : ?>
-            <li>
-                <a href="?UserID=<?php echo $user['CustomerId']; ?>">
-                    <?php echo $user['FirstName']; ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+<div class="row">
+    <div class="col-3">
+        <div>
+            <!-- display a list of chat users -->
+            <ul class="list-group">
+                <h4 class="list-group-item">Customer</h4>
+                <?php foreach ($chatUser as $user) : ?>
+                    <li class="list-group-item list-group-item-action">
+                        <a href="?UserID=<?php echo $user['CustomerId']; ?>">
+                            <?php echo $user['FirstName']; ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
 
-    <!--  Close chat to kill session  -->
-    <div class="closeChatButton">
-        <a href="exit.php" class="btn btn-info">Close Chat to Kill session</a>
+            <!--  Close window to kill session  -->
+            <!--    send to home page-->
+            <div class="closeChatButton">
+                <!--    send to home page-->
+                <a href="exit.php" class="btn btn-danger btn-block">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div id="content">
+                <a class="btn btn-primary" href="adminMessageForm.php">
+                    Send message to Customer
+                </a>
+            <h4><?php echo "Customer Name: $stmt_name,\tCustomer ID: $stmt_id"; ?></h4>
+            <table class="table">
+                <tr>
+                    <th scope="col">Messages</th>
+                    <th scope="col">Time</th>
+                </tr>
+                <?php foreach ($messages as $message) : ?>
+                    <tr scope="row">
+                        <td><?php echo $message['MessageText']; ?></td>
+                        <?php $time = strtotime($message['MessageTime']);?>
+                        <td><?php  echo date('H:i:s d/M/y', $time) ; ?></td>
+                    </tr>
+                <?php
+                endforeach; ?>
+            </table>
+        </div>
     </div>
 </div>
 
-<div id="content">
-
-
-    <h3>
-        <a href="adminMessageForm.php">
-         Send message to User
-        </a>
-    </h3>
-    <!-- display a table of products -->
-    <h2><?php echo "User Name: $stmt_name,\tCustomer ID: $stmt_id"; ?></h2>
-    <table>
-        <tr>
-
-<!--            <th>Customer ID</th>-->
-            <th>Message</th>
-            <th>Time</th>
-            <th>&nbsp;</th>
-        </tr>
-<!--        --><?php //$blank = '';?>
-        <?php foreach ($messages as $message) : ?>
-            <tr>
-<!--                --><?php // if ($blank == $message['EmployeeId']){
-//                    echo '<td>&nbsp;</td>';
-//                } else {?>
-<!--                <td>--><?php //echo $message['EmployeeId']; ?><!--</td>-->
-<!--             --><?php // }?>
-                <td><?php echo $message['MessageText']; ?></td>
-                <td><?php echo $message['MessageTime']; ?></td>
-
-        <?php
-//        $blank = $message['EmployeeId'];
-        endforeach; ?>
-    </table>
-</div>
-
-
-
-    <script type="text/javascript">
-
-        // get messages form database
-        // ONLY WORKS ON CHROME! NEED TO WORK ON FIREFOX AND SAFARI!
-        $(document).ready(function(){
-            // event.preventDefault();
-            setInterval(function(){
-                $('#showMessage').load('adminPage.php')
-            }, 1000);
-        });
-
-    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>

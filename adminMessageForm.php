@@ -81,7 +81,7 @@ $fromMessage = $_SESSION["id"];
 
 
 //Get message from admina and user
-$getMessageByUser = "SELECT * FROM Message2
+$getMessageByUser = "SELECT * FROM Message
                 WHERE EmployeeId = 4
                 and CustomerID = $UserId
                 OR CustomerID = $UserId
@@ -90,60 +90,73 @@ $getMessageByUser = "SELECT * FROM Message2
 $messages = $dbConnect->query($getMessageByUser);
 //$messages->execute();
 //$messages->fetchAll();
+
+
 ?>
 
 
-<h3><a href="adminPage.php">Admin Home</a></h3>
+<div class="container-fluid">
+    <h4><?php echo "User Name: $stmt_name\t Person ID: $stmt_id"; ?></h4>
+    <div class="d-flex p-2 bd-highlight" style="
+            width: auto;
+            height: 400px;
+            overflow: auto;">
+    <div id="content" class="scrollBar" >
+        <table class="table">
+            <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Message</th>
+                <th scope="col">Time</th>
+            </tr>
+            <?php $blank = '';?>
+            <?php foreach ($messages as $message) : ?>
+            <tr>
+                <?php  if ($blank == $message['EmployeeId']){
+                    echo '<td>&nbsp;</td>';
+                } else {?>
+                    <td><?php echo $message['EmployeeId']; ?></td>
+                <?php  }?>
 
-<div id="content" class="scrollBar">
-    <h2><?php echo "User Name: $stmt_name\tUser ID: $stmt_id"; ?></h2>
-    <table>
-        <tr>
-
-            <th>Customer ID</th>
-            <th>Message</th>
-            <th>Time</th>
-        </tr>
-        <?php $blank = '';?>
-        <?php foreach ($messages as $message) : ?>
-        <tr>
-            <?php  if ($blank == $message['EmployeeId']){
-                echo '<td>&nbsp;</td>';
-            } else {?>
-                <td><?php echo $message['EmployeeId']; ?></td>
-            <?php  }?>
-            <td><?php echo $message['MessageText']; ?></td>
-            <td><?php echo $message['MessageTime']; ?></td>
-
-            <?php
-            $blank = $message['EmployeeId'];
-            endforeach; ?>
-    </table>
-</div>
-
-<div id="sidebar">
-<form  action="adminSendMessage.php" method="POST" >
-    <div class="radio-toolbar">
-
-        <?php foreach ($chatUser as $user) : ?>
-            <input name="user_ID"
-                   type="radio"
-                   id="<?php echo $user['FirstName']; ?>"
-                   value="<?php echo $user['CustomerId']; ?>">
-            <label  for="<?php echo $user['FirstName']; ?>" >
-                <?php echo $user['FirstName']; ?>
-            </label>
-        <?php endforeach; ?> </div>
-  <br>
-    <input class="form-control" id="message" name="message" type="input">
-    <div class="input-group-append" id="button-addon4">
-        <input class="btn btn-outline-secondary" name="sendMessage" id="sendMessage" type="submit" value="Submit">
+                <td><?php echo $message['MessageText']; ?></td>
+                <?php $time = strtotime($message['MessageTime']);?>
+                <td><?php  echo date('H:i:s d/M/y', $time) ; ?></td>
+                <?php
+                $blank = $message['EmployeeId'];
+                endforeach; ?>
+        </table>
     </div>
-</form>
+    </div>
+
+    <div id="sidebar">
+    <form  action="adminSendMessage.php" method="POST" >
+        <div class="radio-toolbar">
+
+            <?php foreach ($chatUser as $user) : ?>
+                <input name="user_ID"
+                       type="radio"
+                       id="<?php echo $user['FirstName']; ?>"
+                       value="<?php echo $user['CustomerId']; ?>">
+                <label  for="<?php echo $user['FirstName']; ?>" >
+                    <?php echo $user['FirstName']; ?>
+                </label>
+            <?php endforeach; ?> </div>
+      <br>
+        <div class="input-group">
+            <input class="form-control" id="message" name="message" type="text">
+            <div class="input-group-append" id="button-addon4">
+                <input class="btn btn-outline-secondary" name="sendMessage" id="sendMessage" type="submit" value="Submit">
+            </div>
+        </div>
+
+    </form>
+
+        <br><br><br>
+
+        <a class="btn btn-primary" href="adminPage.php">List of Customer</a>
+
+    </div>
 
 </div>
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

@@ -11,6 +11,7 @@
         // Unset all of the session
         $_SESSION = array();
         session_destroy();
+        header('location: http://csp-teama-capstone.com/home.php');
     ?>
 
     <div style="text-align: center;">

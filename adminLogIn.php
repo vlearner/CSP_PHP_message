@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
+
+
 <body class="text-center">
 <?php
 session_start();
@@ -76,6 +68,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     unset($dbConnect);
 }
+include_once ('style.html');
+
 ?>
 <div class="container">
     <div class="row">
