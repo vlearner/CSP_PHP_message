@@ -28,7 +28,7 @@
         <!-- Show chat message -->
         <div class="d-flex p-2 bd-highlight" style="
         width: auto;
-        height: 260px;
+        height: 290px;
         overflow: auto;"
         id="showMessage">
         </div>
@@ -41,7 +41,7 @@
 <!---->
 <!--         </div>-->
 
-            <?php include ('messageForm.php'); ?>
+            <?php include ('messageForm.php'); ?><br><br>
              <!--  Close chat to kill session  -->
              <div class="closeChatButton">
                  <a href="exit.php" class="btn btn-danger btn-lg btn-block">Close Chat</a>
@@ -52,11 +52,12 @@
         </div>
 
         <script type="text/javascript">
+
    
                 // get messages form database
 // ONLY WORKS ON CHROME! NEED TO WORK ON FIREFOX AND SAFARI!
                 $(document).ready(function(){
-                    // event.preventDefault();
+                    event.preventDefault();
                     setInterval(function(){
                         $('#showMessage').load('messagedata.php')
                     }, 1000);

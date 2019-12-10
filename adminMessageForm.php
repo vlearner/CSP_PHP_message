@@ -4,6 +4,40 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <style>
+        .radio-toolbar {
+            margin: 10px;
+        }
+
+        .radio-toolbar input[type="radio"] {
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+
+        .radio-toolbar label {
+            display: inline-block;
+            background-color: #ddd;
+            padding: 10px 20px;
+            font-family: sans-serif, Arial;
+            font-size: 2vh;
+            border: 2px solid #444;
+            border-radius: 4px;
+        }
+
+        .radio-toolbar label:hover {
+            background-color: #dfd;
+        }
+
+        .radio-toolbar input[type="radio"]:focus + label {
+            border: 2px dashed #444;
+        }
+
+        .radio-toolbar input[type="radio"]:checked + label {
+            background-color: #bfb;
+            border-color: #4c4;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -56,46 +90,19 @@ $getMessageByUser = "SELECT * FROM Message2
 $messages = $dbConnect->query($getMessageByUser);
 //$messages->execute();
 //$messages->fetchAll();
-
-
-
 ?>
 
 
 <h3><a href="adminPage.php">Admin Home</a></h3>
 
-<div id="sidebar">
-<form  action="adminSendMessage.php" method="POST" >
-
-        <?php foreach ($chatUser as $user) : ?>
-            <input name="user_ID"
-                   class="btn btn-secondary"
-                   type="radio"
-                   id="checkBoxStyle"
-                   value="<?php echo $user['CustomerId']; ?>">
-                <?php echo $user['FirstName']; ?>
-        <?php endforeach; ?>
-  <br />
-
-
-
-    <input class="form-control" id="message" name="message" type="input">
-    <div class="input-group-append" id="button-addon4">
-        <input class="btn btn-outline-secondary" name="sendMessage" id="sendMessage" type="submit" value="Submit">
-    </div>
-</form>
-
-</div>
-
-<div id="content">
-<h2><?php echo "User Name: $stmt_name\tUser ID: $stmt_id"; ?></h2>
+<div id="content" class="scrollBar">
+    <h2><?php echo "User Name: $stmt_name\tUser ID: $stmt_id"; ?></h2>
     <table>
         <tr>
 
             <th>Customer ID</th>
             <th>Message</th>
             <th>Time</th>
-            <th>&nbsp;</th>
         </tr>
         <?php $blank = '';?>
         <?php foreach ($messages as $message) : ?>
@@ -113,6 +120,30 @@ $messages = $dbConnect->query($getMessageByUser);
             endforeach; ?>
     </table>
 </div>
+
+<div id="sidebar">
+<form  action="adminSendMessage.php" method="POST" >
+    <div class="radio-toolbar">
+
+        <?php foreach ($chatUser as $user) : ?>
+            <input name="user_ID"
+                   type="radio"
+                   id="<?php echo $user['FirstName']; ?>"
+                   value="<?php echo $user['CustomerId']; ?>">
+            <label  for="<?php echo $user['FirstName']; ?>" >
+                <?php echo $user['FirstName']; ?>
+            </label>
+        <?php endforeach; ?> </div>
+  <br>
+    <input class="form-control" id="message" name="message" type="input">
+    <div class="input-group-append" id="button-addon4">
+        <input class="btn btn-outline-secondary" name="sendMessage" id="sendMessage" type="submit" value="Submit">
+    </div>
+</form>
+
+</div>
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

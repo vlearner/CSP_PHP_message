@@ -57,9 +57,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
-                        $id = $row["UserId"];
-                        $userName = $row["UserName"];
-                        $userEmail = $row["UserEmail"];
+                        $id = $row["PersonId"];
+                        $userName = $row["FirstName"];
+                        $userEmail = $row["EmailAddress"];
 
                         session_start();
 
