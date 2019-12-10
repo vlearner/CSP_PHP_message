@@ -1,6 +1,5 @@
 
-# Change MessageToken TO NULL
-
+# Change MessageToken TO BE NULL
 CREATE TABLE IF NOT EXISTS `Message` (
  `MessageId` int(11) NOT NULL,
  `MessageToken` int(11) NULL,

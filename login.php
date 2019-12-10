@@ -102,7 +102,7 @@
                 </div>
             </div>
 
-<!--            Remove this-->
+<!--   $$$$$$$$$$$$ Remove this code before deployment -->
             <p>
                  User First Name: Adriana - Email: fake_email_1@gmail.com <br>
                  User First Name: Cody - Email: fake_email_2@gmail.com <br>
@@ -115,6 +115,7 @@
                  User First Name: Dan - Email: loavhugd@csp.edu <br>
                  User First Name: Charlie - Email: newuser@csp.edu <br>
             </p>
+<!--   $$$$$$$$$$$$ Remove this code before deployment -->
         </div>
 
  <?php include_once ('script.html'); ?>

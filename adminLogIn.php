@@ -3,8 +3,7 @@
 include_once ('style.html');
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//    header("location: adminPage.php");
-    echo "<script>window.open('adminPage.php');</script>";
+    header("location: adminPage.php");
     exit;
 }
 
@@ -109,10 +108,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     value="Enter"
                     style="none">
                 <br>
+<!--   $$$$$$$$$$$$ Remove this code before deployment -->
                 <p>
                     User: Test2
                     Email: admin2@admin.com
                 </p>
+ <!--  $$$$$$$$$$$ Remove this code before deployment -->
             </form>
         </div>
     </div>

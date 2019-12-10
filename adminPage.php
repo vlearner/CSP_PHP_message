@@ -1,7 +1,6 @@
 
 <?php
 include_once ('style.html');
-//    $userId = 1;
 if (!isset($_SESSION)) { session_start();}
 //Remove unwanted Notice error
 error_reporting( error_reporting() & ~E_NOTICE );
@@ -17,9 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 $adminId = $_SESSION['id'];
 
-
 if(!isset($UserId)) {
-//    $userId = 1;
     $UserId = $_GET['UserID'];
     if (!isset($UserId)) {
         $UserId = 1;
@@ -99,5 +96,4 @@ $messages = $dbConnect->query($getMessageByUser);
         </div>
     </div>
 </div>
-
 <?php include_once ('script.html');?>
