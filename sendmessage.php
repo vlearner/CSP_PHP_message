@@ -4,14 +4,15 @@ session_start();
     //connect to data base
 include('dbconnect.php');
 
-//$sendToMessage = filter_input(INPUT_POST, 'SenderId');
+
 $fromMessage = $_SESSION["id"];
 $messageText = filter_input(INPUT_POST, 'message');
 
     try{
+
         $messageQuery =
-            'INSERT INTO ChatApp3.Message (SenderId, RecieverId, MessageText) 
-                    VALUE (:id, 5, :message)';
+            'INSERT INTO Message (CustomerID, EmployeeId, MessageText) 
+                    VALUE (:id, 4, :message)';
         $stmt = $dbConnect->prepare($messageQuery);
         $stmt->bindValue(':id', $fromMessage);
         $stmt->bindValue(':message', $messageText);

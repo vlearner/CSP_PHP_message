@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c52de3d-3ec5-4ad0-9356-8a3497b40c04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/adminLogIn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminMessageForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminPage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/adminSendMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/messageForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mscript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/selectUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chatSQL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/chatSQL.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dbconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/dbconnect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exit.php" beforeDir="false" afterPath="$PROJECT_DIR$/exit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message.php" beforeDir="false" afterPath="$PROJECT_DIR$/message.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messagedata.php" beforeDir="false" afterPath="$PROJECT_DIR$/messagedata.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sendmessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/sendmessage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sendmessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/sendmessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +27,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -70,7 +54,14 @@
       <workItem from="1571441936612" duration="251000" />
       <workItem from="1573522872717" duration="512000" />
       <workItem from="1573678646263" duration="237000" />
-      <workItem from="1575663474422" duration="17171000" />
+      <workItem from="1575663474422" duration="18274000" />
+      <workItem from="1575692070256" duration="81000" />
+      <workItem from="1575769418491" duration="3893000" />
+      <workItem from="1575787769046" duration="17580000" />
+      <workItem from="1575811156874" duration="1257000" />
+      <workItem from="1575854609437" duration="1047000" />
+      <workItem from="1575923211934" duration="10012000" />
+      <workItem from="1575945494950" duration="32371000" />
     </task>
     <servers />
   </component>

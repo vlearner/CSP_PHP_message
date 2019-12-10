@@ -1,8 +1,7 @@
 
 <?php
     // databse variables
-    $dbHost = 'mysql::host=localhost;dbname=ChatApp3';
-//    $dbName = 'ChatApp3';
+    $dbHost = 'mysql::host=localhost;dbname=OLGSTORE';
     $dbUser = 'root';
     $dbPassword = '';
 
@@ -11,7 +10,6 @@
 		$dbConnect = new PDO($dbHost, $dbUser, $dbPassword);
 		$dbConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		// echo "Database Connected!";
-		
 	}
 	catch (PDOException $e)
 	{
