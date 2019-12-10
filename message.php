@@ -7,10 +7,7 @@
                 header("location: login.php");
                 exit;
             }
-
-
-            ?>
-        </head>
+?>
         <body>
         <div class="container-fluid">
             <div class="jumbotron jumbotron-fluid">

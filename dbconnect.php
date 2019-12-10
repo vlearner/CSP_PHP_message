@@ -3,6 +3,7 @@
     // databse variables
     $dbHost = 'mysql::host=localhost;dbname=OLGSTORE';
     $dbUser = 'root';
+//    PASSWORD NEED TO CHANGE
     $dbPassword = '';
 
 	try

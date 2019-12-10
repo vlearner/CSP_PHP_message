@@ -1,7 +1,6 @@
 
-
-<body class="text-center">
 <?php
+include_once ('style.html');
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 //    header("location: adminPage.php");
@@ -68,10 +67,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     unset($dbConnect);
 }
-include_once ('style.html');
 
 ?>
-<div class="container">
+<div  class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
             <form class="logInForm" action="
@@ -111,19 +109,14 @@ include_once ('style.html');
                     value="Enter"
                     style="none">
                 <br>
+                <p>
+                    User: Test2
+                    Email: admin2@admin.com
+                </p>
             </form>
         </div>
     </div>
 </div>
 
-<p>
-    User: Test2
-    Email: admin2@admin.com
-</p>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-</script>
-</body>
-</html>
+
+<?php include_once ('script.html');?>
