@@ -4,7 +4,7 @@ session_start();
     //connect to data base
 include('dbconnect.php');
 
-//$sendToMessage = filter_input(INPUT_POST, 'SenderId');
+
 $fromMessage = $_SESSION["id"];
 $messageText = filter_input(INPUT_POST, 'message');
 
