@@ -6,10 +6,7 @@ error_reporting( error_reporting() & ~E_NOTICE );
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
 
-
-
 require('dbconnect.php');
-
 
 if(!isset($UserId)) {
 //    $userId = 1;

@@ -11,7 +11,6 @@
 		$dbConnect = new PDO($dbHost, $dbUser, $dbPassword);
 		$dbConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		// echo "Database Connected!";
-		
 	}
 	catch (PDOException $e)
 	{

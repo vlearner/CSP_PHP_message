@@ -4,12 +4,10 @@ if (!isset($_SESSION)) { session_start();}
 //Remove unwanted Notice error
 error_reporting( error_reporting() & ~E_NOTICE );
 
-
 require('dbconnect.php');
 
 //Get data
 $fromMessage = $_SESSION['username'];
-
 
 $UserId = $_POST['user_ID'];
 $messageText = $_POST['message'];
